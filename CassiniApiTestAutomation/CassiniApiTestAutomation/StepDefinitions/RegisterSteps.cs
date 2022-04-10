@@ -54,21 +54,6 @@ namespace CassiniApiTestAutomation.StepDefinitions
             await _apiTestContext.GetResponse();
         }
         
-       /* [DeploymentItem("TestData\\TestCre.csv"), 
-          DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "TestCre.csv", "TestCre#csv",
-            DataAccessMethod.Sequential)]*/
-        [Given(@"I perform a POST request to the ""(.*)"" endpoint with csv file")]
-        public async Task GivenIPerformAGETRequestForWithcsvfile(string url)
-        {
-            _apiTestContext.SetBaseUrl();
-            _apiTestContext.AddRequest(url, Method.Post);
-            var body = _apiTestContext.Request.AddFile("file", @"C:\Users\russell.goualin\OneDrive - Zupa Tech LTD\Desktop\CassiniAutomotion\CassiniApiTestAutomation\CassiniApiTestAutomation\TestData\TestCre.csv");
-            _apiTestContext.Request.AddBody(body);
-
-            /*_apiTestContext.Request.RequestFormat = DataFormat.Json;
-            var body = new post { Email = "eve.holt@reqres.in", Password = "pistol" };
-            _apiTestContext.Request.AddBody(body);*/
-            await _apiTestContext.GetResponse();
         }
     }
 }
