@@ -12,12 +12,6 @@ Scenario: Successful Register
 
 Scenario: Successful Register using Json
 	
-	Given I perform a POST request to the "/register" endpoint with Jason data
+	Given I perform a POST request to the "/register" endpoint with Json data
 	Then a "200" response is returned
 	Then I should see the "id" as "4"
-
-Scenario: Successful Register using csv file
-	
-	Given I perform a POST request to the "/register" endpoint with csv file
-	Then a "200" response is returned
-	#Then I should see the "id" as "4"
