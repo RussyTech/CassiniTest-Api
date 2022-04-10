@@ -43,7 +43,7 @@ namespace CassiniApiTestAutomation.StepDefinitions
             Assert.That(_apiTestContext.Response.GetResponseObject(key), Is.EqualTo(value), $"The {key} is not correct");
         }
 
-        [Given(@"I perform a POST request to the ""(.*)"" endpoint with Jason data")]
+        [Given(@"I perform a POST request to the ""(.*)"" endpoint with Json data")]
         public async Task GivenIPerformAGETRequestForWithJsonData(string url)
         {
             _apiTestContext.SetBaseUrl();
@@ -51,6 +51,16 @@ namespace CassiniApiTestAutomation.StepDefinitions
             _apiTestContext.Request.RequestFormat = DataFormat.Json;
             var body = new post { Email = "eve.holt@reqres.in", Password = "pistol" };
             _apiTestContext.Request.AddBody(body);
+            await _apiTestContext.GetResponse();
+        }
+        
+        [DeploymentItem("TestData\\TestCre.json")]
+        [Given(@"I perform a POST request to the ""(.*)"" endpoint with Json file")]
+        public async Task GivenIPerformAGETRequestForWithJsonFile(string url)
+        {
+            var JsonPayload = Helpers.parseJson<Usermodel>("TestData.json");
+            _apiTestContext.SetBaseUrl();
+            _apiTestContext.AddRequestParameter(url, Method.Post, JsonPayload);
             await _apiTestContext.GetResponse();
         }
         
