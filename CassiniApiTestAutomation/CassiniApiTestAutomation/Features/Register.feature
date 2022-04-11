@@ -9,8 +9,15 @@ Scenario: Successful Register
 	Then a "200" response is returned
 	Then I should see the "id" as "4"
 
-Scenario: Successful Register using Json
+Scenario: Successful Register using Json Data
 	
 	Given I perform a POST request to the "/register" endpoint with Json data
 	Then a "200" response is returned
 	Then I should see the "id" as "4"
+	
+Scenario: Successful Register using Json file
+	
+	Given I perform a POST request to the "/register" endpoint with Json file
+	Then a "200" response is returned
+	Then I should see the "id" as "4"
+
